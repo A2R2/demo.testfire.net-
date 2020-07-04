@@ -4,4 +4,5 @@ http://demo.testfire.net
 *****
 ext_login.jar
 ext_scanner.jar
+ext_report.jar
 stop
