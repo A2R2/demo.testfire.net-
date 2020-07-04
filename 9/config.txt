@@ -1,3 +1,7 @@
 rujulypatel@gmail.com
 http://demo.testfire.net
 0
+*****
+ext_login.jar
+ext_scanner.jar
+stop
