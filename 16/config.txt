@@ -1,0 +1,9 @@
+ruju@adobe.com
+http://demo.testfire.net
+4490
+*****
+ext_login.jar
+ext_scanner.jar
+ext_aem_hacker.jar
+ext_report.jar
+stop
