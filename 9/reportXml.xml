@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<!DOCTYPE issues [
+<!ELEMENT issues (issue*)>
+<!ATTLIST issues burpVersion CDATA "">
+<!ATTLIST issues exportTime CDATA "">
+<!ELEMENT issue (serialNumber, type, name, host, path, location, severity, confidence, issueBackground?, remediationBackground?, references?, vulnerabilityClassifications?, issueDetail?, issueDetailItems?, remediationDetail?, requestresponse*, collaboratorEvent*, infiltratorEvent*, staticAnalysis*, dynamicAnalysis*)>
+<!ELEMENT serialNumber (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT severity (#PCDATA)>
+<!ELEMENT confidence (#PCDATA)>
+<!ELEMENT issueBackground (#PCDATA)>
+<!ELEMENT remediationBackground (#PCDATA)>
+<!ELEMENT references (#PCDATA)>
+<!ELEMENT vulnerabilityClassifications (#PCDATA)>
+<!ELEMENT issueDetail (#PCDATA)>
+<!ELEMENT issueDetailItems (issueDetailItem*)>
+<!ELEMENT issueDetailItem (#PCDATA)>
+<!ELEMENT remediationDetail (#PCDATA)>
+<!ELEMENT requestresponse (request?, response?, responseRedirected?)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request method CDATA "">
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT responseRedirected (#PCDATA)>
+<!ELEMENT sender (#PCDATA)>
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT conversation (#PCDATA)>
+<!ELEMENT recipient (#PCDATA)>
+<!ELEMENT recipients (recipient*)>
+<!ELEMENT smtp (sender, recipients, message, conversation)>
+<!ELEMENT collaboratorEvent (interactionType, originIp, time, lookupType?, lookupHost?, requestresponse?, smtp?)>
+<!ELEMENT interactionType (#PCDATA)>
+<!ELEMENT originIp (#PCDATA)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT lookupType (#PCDATA)>
+<!ELEMENT lookupHost (#PCDATA)>
+<!ELEMENT infiltratorEvent (parameterName, platform, signature, stackTrace?, parameterValue?, collaboratorEvent)>
+<!ELEMENT parameterName (#PCDATA)>
+<!ELEMENT platform (#PCDATA)>
+<!ELEMENT signature (#PCDATA)>
+<!ELEMENT stackTrace (#PCDATA)>
+<!ELEMENT parameterValue (#PCDATA)>
+<!ELEMENT dynamicAnalysis (source, sink, sourceStackTrace, sinkStackTrace, eventListenerStackTrace, sourceValue, sinkValue, eventHandlerData, eventHandlerDataType, eventHandlerManipulatedData, poc, origin, isOriginChecked, sourceElementId, sourceElementName, eventFiredEventName, eventFiredElementId, eventFiredElementName, eventFiredOuterHtml)>
+<!ELEMENT staticAnalysis (source, sink, codeSnippets)>
+<!ELEMENT source (#PCDATA)>
+<!ELEMENT sink (#PCDATA)>
+<!ELEMENT sourceStackTrace (#PCDATA)>
+<!ELEMENT sinkStackTrace (#PCDATA)>
+<!ELEMENT eventListenerStackTrace (#PCDATA)>
+<!ELEMENT sourceValue (#PCDATA)>
+<!ELEMENT sinkValue (#PCDATA)>
+<!ELEMENT eventHandlerData (#PCDATA)>
+<!ELEMENT eventHandlerDataType (#PCDATA)>
+<!ELEMENT sourceElementId (#PCDATA)>
+<!ELEMENT sourceElementName (#PCDATA)>
+<!ELEMENT eventFiredEventName (#PCDATA)>
+<!ELEMENT eventFiredElementId (#PCDATA)>
+<!ELEMENT eventFiredElementName (#PCDATA)>
+<!ELEMENT eventFiredOuterHtml (#PCDATA)>
+<!ELEMENT eventHandlerManipulatedData (#PCDATA)>
+<!ELEMENT poc (#PCDATA)>
+<!ELEMENT origin (#PCDATA)>
+<!ELEMENT isOriginChecked (#PCDATA)>
+<!ELEMENT codeSnippets (codeSnippet*)>
+<!ELEMENT codeSnippet (#PCDATA)>
+]>
+<issues burpVersion="2020.2.1" exportTime="Sun Jul 05 07:30:31 GMT 2020">
+  <issue>
+    <serialNumber>4709862375245054976</serialNumber>
+    <type>16777728</type>
+    <name><![CDATA[Unencrypted communications]]></name>
+    <host ip="65.61.137.117">http://demo.testfire.net</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>Low</severity>
+    <confidence>Certain</confidence>
+    <issueBackground><![CDATA[<p>The application allows users to connect to it over unencrypted connections.  An attacker suitably positioned to view a legitimate user's network traffic could record and monitor their interactions with the application and obtain any information the user supplies. Furthermore, an attacker able to modify traffic could use the application as a platform for attacks against its users and third-party websites. Unencrypted connections have been exploited by ISPs and governments to track users, and to inject adverts and malicious JavaScript. Due to these concerns, web browser vendors are planning to visually flag unencrypted connections as hazardous.</p>
+<p>
+To exploit this vulnerability, an attacker must be suitably positioned to eavesdrop on the victim's network traffic. This scenario typically occurs when a client communicates with the server over an insecure connection such as public Wi-Fi, or a corporate or home network that is shared with a compromised computer. Common defenses such as switched networks are not sufficient to prevent this. An attacker situated in the user's ISP or the application's hosting infrastructure could also perform this attack. Note that an advanced adversary could potentially target any connection made over the Internet's core infrastructure.
+</p>
+<p>Please note that using a mixture of encrypted and unencrypted communications is an ineffective defense against active attackers, because they can easily remove references to encrypted resources when these references are transmitted over an unencrypted connection.</p>]]></issueBackground>
+    <remediationBackground><![CDATA[<p>Applications should use transport-level encryption (SSL/TLS) to protect all communications passing between the client and the server. The Strict-Transport-Security HTTP header should be used to ensure that clients refuse to access the server over an insecure connection.</p>]]></remediationBackground>
+    <references><![CDATA[<ul>
+<li><a href="https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure">Marking HTTP as non-secure</a></li>
+<li><a href="https://wiki.mozilla.org/Security/Server_Side_TLS">Configuring Server-Side SSL/TLS</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security">HTTP Strict Transport Security</a></li>
+</ul>]]></references>
+    <vulnerabilityClassifications><![CDATA[<ul>
+<li><a href="https://cwe.mitre.org/data/definitions/326.html">CWE-326: Inadequate Encryption Strength</a></li>
+</ul>]]></vulnerabilityClassifications>
+  </issue>
+  <issue>
+    <serialNumber>2702884115629012992</serialNumber>
+    <type>134217728</type>
+    <name><![CDATA[UnAuth Acess]]></name>
+    <host ip="65.61.137.117">http://demo.testfire.net</host>
+    <path><![CDATA[/]]></path>
+    <location><![CDATA[/]]></location>
+    <severity>High</severity>
+    <confidence>Firm</confidence>
+    <issueBackground><![CDATA[HAcker]]></issueBackground>
+    <remediationBackground><![CDATA[ Unknown]]></remediationBackground>
+    <issueDetail><![CDATA[Intruder]]></issueDetail>
+    <remediationDetail><![CDATA[UnKnown]]></remediationDetail>
+    <requestresponse>
+      <request method="GET" base64="true"><![CDATA[R0VUIC9yb2JvdHMudHh0IEhUVFAvMS4xDQpIb3N0OiBkZW1vLnRlc3RmaXJlLm5ldA0KQWNjZXB0LUVuY29kaW5nOiBnemlwLCBkZWZsYXRlDQpBY2NlcHQ6ICovKg0KQWNjZXB0LUxhbmd1YWdlOiBlbi1VUyxlbi1HQjtxPTAuOSxlbjtxPTAuOA0KVXNlci1BZ2VudDogTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzgwLjAuMzk4Ny4xMzIgU2FmYXJpLzUzNy4zNg0KQ29ubmVjdGlvbjogY2xvc2UNCkNhY2hlLUNvbnRyb2w6IG1heC1hZ2U9MA0KDQo=]]></request>
+      <response base64="true"><![CDATA[SFRUUC8xLjEgNDA0IE5vdCBGb3VuZA0KU2VydmVyOiBBcGFjaGUtQ295b3RlLzEuMQ0KU2V0LUNvb2tpZTogSlNFU1NJT05JRD0wQTcxMUMzOENERkVGMUNEMTREQjU2QTlFNTQ2NDRDMjsgUGF0aD0vOyBIdHRwT25seQ0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7Y2hhcnNldD1JU08tODg1OS0xDQpDb250ZW50LUxlbmd0aDogNjkyMg0KRGF0ZTogU3VuLCAwNSBKdWwgMjAyMCAwNzoyOTowMiBHTVQNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg0KDQoNCiANCiAgICANCg0KIA0KDQo8IS0tIEJFR0lOIEhFQURFUiAtLT4NCjwhRE9DVFlQRSBodG1sIFBVQkxJQyAiLS8vVzNDLy9EVEQgWEhUTUwgMS4wIFRyYW5zaXRpb25hbC8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9UUi94aHRtbDEvRFREL3hodG1sMS10cmFuc2l0aW9uYWwuZHRkIj4NCg0KPGh0bWwgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiIHhtbDpsYW5nPSJlbiIgPg0KDQoNCg0KPGhlYWQ+DQoJPHRpdGxlPkFsdG9ybyBNdXR1YWw8L3RpdGxlPg0KICA8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD1pc28tODg1OS0xIiAvPg0KICA8bGluayBocmVmPSIvc3R5bGUuY3NzIiByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiAvPg0KPC9oZWFkPg0KPGJvZHkgc3R5bGU9Im1hcmdpbi10b3A6NXB4OyI+DQoNCjxkaXYgaWQ9ImhlYWRlciIgc3R5bGU9Im1hcmdpbi1ib3R0b206NXB4OyB3aWR0aDogOTklOyI+DQogIDxmb3JtIGlkPSJmcm1TZWFyY2giIG1ldGhvZD0iZ2V0IiBhY3Rpb249Ii9zZWFyY2guanNwIj4NCgkgIDx0YWJsZSB3aWR0aD0iMTAwJSIgYm9yZGVyPSIwIiBjZWxscGFkZGluZz0iMCIgY2VsbHNwYWNpbmc9IjAiPg0KCQkgIDx0cj4NCgkJICAgICAgPHRkIHJvd3NwYW49IjIiPjxhIGlkPSJIeXBlckxpbmsxIiBocmVmPSIvaW5kZXguanNwIj48aW1nIHNyYz0iL2ltYWdlcy9sb2dvLmdpZiIgd2lkdGg9MjgzIGhlaWdodD04MC8+PC9hPjwvdGQ+DQoJCQkgIDx0ZCBhbGlnbj0icmlnaHQiIHZhbGlnbj0idG9wIj4NCiAgCQkJICA8YSBpZD0iTG9naW5MaW5rIiBocmVmPSIvbG9naW4uanNwIj48Zm9udCBzdHlsZT0iZm9udC13ZWlnaHQ6IGJvbGQ7IGNvbG9yOiByZWQ7Ij5TaWduIEluPC9mb250PjwvYT4gfCA8YSBpZD0iSHlwZXJMaW5rMyIgaHJlZj0iL2luZGV4LmpzcD9jb250ZW50PWluc2lkZV9jb250YWN0Lmh0bSI+Q29udGFjdCBVczwvYT4gfCA8YSBpZD0iSHlwZXJMaW5rNCIgaHJlZj0iL2ZlZWRiYWNrLmpzcCI+RmVlZGJhY2s8L2E+IHwgPGxhYmVsIGZvcj0idHh0U2VhcmNoIj5TZWFyY2g8L2xhYmVsPg0KICAgICAgICAgIDxpbnB1dCB0eXBlPSJ0ZXh0IiBuYW1lPSJxdWVyeSIgaWQ9InF1ZXJ5IiBhY2Nlc3NrZXk9IlMiIC8+DQogICAgICAgICAgPGlucHV0IHR5cGU9InN1Ym1pdCIgdmFsdWU9IkdvIiAvPg0KCQkJICA8L3RkPg0KCQkgIDwvdHI+DQoJCSAgPHRyPg0KCQkJICA8dGQgYWxpZ249InJpZ2h0IiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTp1cmwoJy9pbWFnZXMvZ3JhZGllbnQuanBnJyk7cGFkZGluZzowcHg7bWFyZ2luOjBweDsiPjxpbWcgc3JjPSIvaW1hZ2VzL2hlYWRlcl9waWMuanBnIiBhbHQ9IiIgd2lkdGg9MzU0IGhlaWdodD02MC8+PC90ZD4NCgkJICA8L3RyPg0KCSAgPC90YWJsZT4NCgk8L2Zvcm0+DQo8L2Rpdj4NCg0KPHRhYmxlIGNlbGxzcGFjaW5nPSIwIiB3aWR0aD0iMTAwJSI+DQogIDx0cj4NCiAgICA8dGQgd2lkdGg9IjI1JSIgY2xhc3M9ImJ0IGJyIGJiIj48ZGl2IGlkPSJIZWFkZXIxIj48aW1nIGlkPSJJbWFnZTEiIHNyYz0iL2ltYWdlcy9wZl9sb2NrLmdpZiIgd2lkdGg9MTIgaGVpZ2h0PTE0IHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjogYm90dG9tOyIgYWx0PSJTZWN1cmUgTG9naW4iLz4gJm5ic3A7IDxhIGlkPSJBY2NvdW50TGluayIgaHJlZj0iL2xvZ2luLmpzcCIgY2xhc3M9ImZvY3VzIiA+T05MSU5FIEJBTktJTkcgTE9HSU48L2E+PC9kaXY+PC90ZD4NCiAgICA8dGQgd2lkdGg9IjI1JSIgY2xhc3M9ImNjIGJ0IGJyIGJiIj48ZGl2IGlkPSJIZWFkZXIyIj48YSBpZD0iTGlua0hlYWRlcjIiIGNsYXNzPSJmb2N1cyIgaHJlZj0iL2luZGV4LmpzcD9jb250ZW50PXBlcnNvbmFsLmh0bSIgPlBFUlNPTkFMPC9hPjwvZGl2PjwvdGQ+DQogICAgPHRkIHdpZHRoPSIyNSUiIGNsYXNzPSJjYyBidCBiciBiYiI+PGRpdiBpZD0iSGVhZGVyMyI+PGEgaWQ9IkxpbmtIZWFkZXIzIiBjbGFzcz0iZm9jdXMiIGhyZWY9Ii9pbmRleC5qc3A/Y29udGVudD1idXNpbmVzcy5odG0iID5TTUFMTCBCVVNJTkVTUzwvYT48L2Rpdj48L3RkPg0KICAgIDx0ZCB3aWR0aD0iMjUlIiBjbGFzcz0iY2MgYnQgYmIiPjxkaXYgaWQ9IkhlYWRlcjQiPjxhIGlkPSJMaW5rSGVhZGVyNCIgY2xhc3M9ImZvY3VzIiBocmVmPSIvaW5kZXguanNwP2NvbnRlbnQ9aW5zaWRlLmh0bSI+SU5TSURFIEFMVE9STyBNVVRVQUw8L2E+PC9kaXY+PC90ZD4NCiAgPC90cj4NCiAgPHRyPg0KICANCiAgPCEtLSBFTkQgSEVBREVSIC0tPg0KDQoNCjxkaXYgaWQ9IndyYXBwZXIiIHN0eWxlPSJ3aWR0aDogOTklOyI+DQoJIA0KDQo8IS0tIFRPQyBCRUdJTiAtLT4gICAgIA0KICAgICA8dGQgdmFsaWduPSJ0b3AiIGNsYXNzPSJjYyBiciBiYiI+DQogICAgICAgIDxiciBzdHlsZT0ibGluZS1oZWlnaHQ6IDEwcHg7Ii8+DQogICAgICAgIA0KICAgICAgICA8YSBpZD0iQ2F0TGluazEiIGNsYXNzPSJzdWJoZWFkZXIiIGhyZWY9ImluZGV4LmpzcD9jb250ZW50PXBlcnNvbmFsLmh0bSI+UEVSU09OQUw8L2E+DQogICAgICAgIDx1bCBjbGFzcz0ic2lkZWJhciI+DQogICAgICAgICAgICA8bGk+PGEgaWQ9Ik1lbnVIeXBlckxpbmsxIiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1wZXJzb25hbF9kZXBvc2l0Lmh0bSI+RGVwb3NpdCBQcm9kdWN0PC9hPjwvbGk+DQogICAgICAgICAgICA8bGk+PGEgaWQ9Ik1lbnVIeXBlckxpbmsyIiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1wZXJzb25hbF9jaGVja2luZy5odG0iPkNoZWNraW5nPC9hPjwvbGk+DQogICAgICAgICAgICA8bGk+PGEgaWQ9Ik1lbnVIeXBlckxpbmszIiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1wZXJzb25hbF9sb2Fucy5odG0iPkxvYW4gUHJvZHVjdHM8L2E+PC9saT4NCiAgICAgICAgICAgIDxsaT48YSBpZD0iTWVudUh5cGVyTGluazQiIGhyZWY9ImluZGV4LmpzcD9jb250ZW50PXBlcnNvbmFsX2NhcmRzLmh0bSI+Q2FyZHM8L2E+PC9saT4NCiAgICAgICAgICAgIDxsaT48YSBpZD0iTWVudUh5cGVyTGluazUiIGhyZWY9ImluZGV4LmpzcD9jb250ZW50PXBlcnNvbmFsX2ludmVzdG1lbnRzLmh0bSI+SW52ZXN0bWVudHMgJmFtcDsgSW5zdXJhbmNlPC9hPjwvbGk+DQogICAgICAgICAgICA8bGk+PGEgaWQ9Ik1lbnVIeXBlckxpbms2IiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1wZXJzb25hbF9vdGhlci5odG0iPk90aGVyIFNlcnZpY2VzPC9hPjwvbGk+DQogICAgICAgIDwvdWw+DQoNCiAgICAgICAgPGEgaWQ9IkNhdExpbmsyIiBjbGFzcz0ic3ViaGVhZGVyIiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1idXNpbmVzcy5odG0iPlNNQUxMIEJVU0lORVNTPC9hPg0KICAgICAgICA8dWwgY2xhc3M9InNpZGViYXIiPg0KICAgICAgICAgICAgPGxpPjxhIGlkPSJNZW51SHlwZXJMaW5rNyIgaHJlZj0iaW5kZXguanNwP2NvbnRlbnQ9YnVzaW5lc3NfZGVwb3NpdC5odG0iPkRlcG9zaXQgUHJvZHVjdHM8L2E+PC9saT4NCiAgICAgICAgICAgIDxsaT48YSBpZD0iTWVudUh5cGVyTGluazgiIGhyZWY9ImluZGV4LmpzcD9jb250ZW50PWJ1c2luZXNzX2xlbmRpbmcuaHRtIj5MZW5kaW5nIFNlcnZpY2VzPC9hPjwvbGk+DQogICAgICAgICAgICA8bGk+PGEgaWQ9Ik1lbnVIeXBlckxpbms5IiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1idXNpbmVzc19jYXJkcy5odG0iPkNhcmRzPC9hPjwvbGk+DQogICAgICAgICAgICA8bGk+PGEgaWQ9Ik1lbnVIeXBlckxpbmsxMCIgaHJlZj0iaW5kZXguanNwP2NvbnRlbnQ9YnVzaW5lc3NfaW5zdXJhbmNlLmh0bSI+SW5zdXJhbmNlPC9hPjwvbGk+DQogICAgICAgICAgICA8bGk+PGEgaWQ9Ik1lbnVIeXBlckxpbmsxMSIgaHJlZj0iaW5kZXguanNwP2NvbnRlbnQ9YnVzaW5lc3NfcmV0aXJlbWVudC5odG0iPlJldGlyZW1lbnQ8L2E+PC9saT4NCiAgICAgICAgICAgIDxsaT48YSBpZD0iTWVudUh5cGVyTGluazEyIiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1idXNpbmVzc19vdGhlci5odG0iPk90aGVyIFNlcnZpY2VzPC9hPjwvbGk+DQogICAgICAgIDwvdWw+DQoNCiAgICAgICAgPGEgaWQ9IkNhdExpbmszIiBjbGFzcz0ic3ViaGVhZGVyIiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1pbnNpZGUuaHRtIj5JTlNJREUgQUxUT1JPIE1VVFVBTDwvYT4NCiAgICAgICAgPHVsIGNsYXNzPSJzaWRlYmFyIj4NCiAgICAgICAgICAgIDxsaT48YSBpZD0iTWVudUh5cGVyTGluazEzIiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1pbnNpZGVfYWJvdXQuaHRtIj5BYm91dCBVczwvYT48L2xpPg0KICAgICAgICAgICAgPGxpPjxhIGlkPSJNZW51SHlwZXJMaW5rMTQiIGhyZWY9ImluZGV4LmpzcD9jb250ZW50PWluc2lkZV9jb250YWN0Lmh0bSI+Q29udGFjdCBVczwvYT48L2xpPg0KICAgICAgICAgICAgPGxpPjxhIGlkPSJNZW51SHlwZXJMaW5rMTUiIGhyZWY9ImNnaS5leGUiPkxvY2F0aW9uczwvYT48L2xpPg0KICAgICAgICAgICAgPGxpPjxhIGlkPSJNZW51SHlwZXJMaW5rMTYiIGhyZWY9ImluZGV4LmpzcD9jb250ZW50PWluc2lkZV9pbnZlc3Rvci5odG0iPkludmVzdG9yIFJlbGF0aW9uczwvYT48L2xpPg0KICAgICAgICAgICAgPGxpPjxhIGlkPSJNZW51SHlwZXJMaW5rMTciIGhyZWY9ImluZGV4LmpzcD9jb250ZW50PWluc2lkZV9wcmVzcy5odG0iPlByZXNzIFJvb208L2E+PC9saT4NCiAgICAgICAgICAgIDxsaT48YSBpZD0iTWVudUh5cGVyTGluazE4IiBocmVmPSJpbmRleC5qc3A/Y29udGVudD1pbnNpZGVfY2FyZWVycy5odG0iPkNhcmVlcnM8L2E+PC9saT4NCgkJCTxsaT48YSBpZD0iTWVudUh5cGVyTGluazE5IiBocmVmPSJzdWJzY3JpYmUuanNwIj5TdWJzY3JpYmU8L2E+PC9saT4NCiAgICAgICAgPC91bD4NCiAgICA8L3RkPg0KPCEtLSBUT0MgRU5EIC0tPg0KDQogICAgPHRkIHZhbGlnbj0idG9wIiBjb2xzcGFuPSIzIiBjbGFzcz0iYmIiPg0KCQkNCgkJPGRpdiBjbGFzcz0iZmwiIHN0eWxlPSJ3aWR0aDogOTklOyI+DQoJCTxoMT5BbiBFcnJvciBIYXMgT2NjdXJyZWQ8L2gxPg0KCQkNCgkJPHA+UGFnZSBjb3VsZCBub3QgYmUgZm91bmQuDQo8L3A+DQoNCgkJPC9kaXY+DQoJPC90ZD4NCjwvZGl2Pg0KIA0KDQo8IS0tIEJFR0lOIEZPT1RFUiAtLT4NCg0KDQo8L3RyPg0KPC90YWJsZT4NCjxkaXYgaWQ9ImZvb3RlciIgc3R5bGU9IndpZHRoOiA5OSU7Ij4NCiAgICA8YSBpZD0iSHlwZXJMaW5rNSIgaHJlZj0iL2luZGV4LmpzcD9jb250ZW50PXByaXZhY3kuaHRtIj5Qcml2YWN5IFBvbGljeTwvYT4NCiAgICAmbmJzcDsmbmJzcDt8Jm5ic3A7Jm5ic3A7DQogICAgPGEgaWQ9Ikh5cGVyTGluazYiIGhyZWY9Ii9pbmRleC5qc3A/Y29udGVudD1zZWN1cml0eS5odG0iPlNlY3VyaXR5IFN0YXRlbWVudDwvYT4NCiAgICAmbmJzcDsmbmJzcDt8Jm5ic3A7Jm5ic3A7DQogICAgPGEgaWQ9Ikh5cGVyTGluazYiIGhyZWY9Ii9zdGF0dXNfY2hlY2suanNwIj5TZXJ2ZXIgU3RhdHVzIENoZWNrPC9hPg0KICAgICZuYnNwOyZuYnNwO3wmbmJzcDsmbmJzcDsgDQogICAgPGEgaWQ9Ikh5cGVyTGluazYiIGhyZWY9Ii9zd2FnZ2VyL2luZGV4Lmh0bWwiPlJFU1QgQVBJPC9hPg0KICAgICZuYnNwOyZuYnNwO3wmbmJzcDsmbmJzcDsgDQogICAgJmNvcHk7Jm5ic3A7MjAyMCBBbHRvcm8gTXV0dWFsLCBJbmMuDQogICAgPHNwYW4gc3R5bGU9ImNvbG9yOnJlZDtmb250LXdlaWdodDpib2xkO2ZvbnQtc3R5bGU6aXRhbGljO2Zsb2F0OnJpZ2h0Ij5UaGlzIHdlYiBhcHBsaWNhdGlvbiBpcyBvcGVuIHNvdXJjZSE8c3BhbiBzdHlsZT0iY29sb3I6YmxhY2s7Zm9udC1zdHlsZTppdGFsaWM7Zm9udC13ZWlnaHQ6bm9ybWFsO2Zsb2F0OnJpZ2h0Ij4mbmJzcDs8YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vQXBwU2VjRGV2L0FsdG9yb0ovIj5HZXQgeW91ciBjb3B5IGZyb20gR2l0SHViPC9hPiBhbmQgdGFrZSBhZHZhbnRhZ2Ugb2YgYWR2YW5jZWQgZmVhdHVyZXM8L3NwYW4+PC9zcGFuPg0KCTxicj48YnI+PGJyPg0KICAgIDxkaXYgY2xhc3M9ImRpc2NsYWltZXIiPg0KICAgICAgICBUaGUgQWx0b3JvSiB3ZWJzaXRlIGlzIHB1Ymxpc2hlZCBieSBJQk0gQ29ycG9yYXRpb24gZm9yIHRoZSBzb2xlIHB1cnBvc2Ugb2YNCiAgICAgICAgZGVtb25zdHJhdGluZyB0aGUgZWZmZWN0aXZlbmVzcyBvZiBJQk0gcHJvZHVjdHMgaW4gZGV0ZWN0aW5nIHdlYiBhcHBsaWNhdGlvbg0KICAgICAgICB2dWxuZXJhYmlsaXRpZXMgYW5kIHdlYnNpdGUgZGVmZWN0cy4gVGhpcyBzaXRlIGlzIG5vdCBhIHJlYWwgYmFua2luZyBzaXRlLiBTaW1pbGFyaXRpZXMsDQogICAgICAgIGlmIGFueSwgdG8gdGhpcmQgcGFydHkgcHJvZHVjdHMgYW5kL29yIHdlYnNpdGVzIGFyZSBwdXJlbHkgY29pbmNpZGVudGFsLiBUaGlzIHNpdGUgaXMNCiAgICAgICAgcHJvdmlkZWQgImFzIGlzIiB3aXRob3V0IHdhcnJhbnR5IG9mIGFueSBraW5kLCBlaXRoZXIgZXhwcmVzcyBvciBpbXBsaWVkLiBJQk0gZG9lcw0KICAgICAgICBub3QgYXNzdW1lIGFueSByaXNrIGluIHJlbGF0aW9uIHRvIHlvdXIgdXNlIG9mIHRoaXMgd2Vic2l0ZS4gRm9yIG1vcmUgaW5mb3JtYXRpb24sDQogICAgICAgIHBsZWFzZSBnbyB0byA8YSBpZD0iSHlwZXJMaW5rNyIgaHJlZj0iaHR0cDovL3d3dy0xNDIuaWJtLmNvbS9zb2Z0d2FyZS9wcm9kdWN0cy91cy9lbi9zdWJjYXRlZ29yeS9TV0kxMCIgPmh0dHA6Ly93d3ctMTQyLmlibS5jb20vc29mdHdhcmUvcHJvZHVjdHMvdXMvZW4vc3ViY2F0ZWdvcnkvU1dJMTA8L2E+LjxiciAvPjxiciAvPg0KDQogICAgICAgIENvcHlyaWdodCAmY29weTsgMjAwOCwgMjAyMCwgSUJNIENvcnBvcmF0aW9uLCBBbGwgcmlnaHRzIHJlc2VydmVkLg0KICAgIDwvZGl2Pg0KPC9kaXY+DQoNCjwvYm9keT4NCjwvaHRtbD4NCjwhLS0gRU5EIEZPT1RFUiAtLT4=]]></response>
+      <responseRedirected>false</responseRedirected>
+    </requestresponse>
+  </issue>
+  <issue>
+    <serialNumber>407304607966188544</serialNumber>
+    <type>7340544</type>
+    <name><![CDATA[Base64-encoded data in parameter]]></name>
+    <host ip="65.61.137.117">http://demo.testfire.net</host>
+    <path><![CDATA[/bank/main.jsp]]></path>
+    <location><![CDATA[/bank/main.jsp]]></location>
+    <severity>Information</severity>
+    <confidence>Firm</confidence>
+    <issueBackground><![CDATA[<p>Applications sometimes Base64-encode parameters in an attempt to obfuscate them from users or facilitate transport of binary data. The presence of Base64-encoded data may indicate security-sensitive information or functionality that is worthy of further investigation. The data should be reviewed to determine whether it contains any interesting information, or provides any additional entry points for malicious input.</p>]]></issueBackground>
+    <vulnerabilityClassifications><![CDATA[<ul>
+<li><a href="https://cwe.mitre.org/data/definitions/310.html">CWE-310: Cryptographic Issues</a></li>
+<li><a href="https://cwe.mitre.org/data/definitions/311.html">CWE-311: Missing Encryption of Sensitive Data</a></li>
+</ul>]]></vulnerabilityClassifications>
+    <issueDetail><![CDATA[The following parameter appears to contain Base64-encoded data:<ul><li><b>AltoroAccounts = 800000~Corporate~5.198941061E7|800001~Checking~425171.44|</b></li></ul>]]></issueDetail>
+    <issueDetailItems>
+      <issueDetailItem><![CDATA[AltoroAccounts = 800000~Corporate~5.198941061E7|800001~Checking~425171.44|]]></issueDetailItem>
+    </issueDetailItems>
+    <requestresponse>
+      <request method="GET" base64="true"><![CDATA[R0VUIGh0dHA6Ly9kZW1vLnRlc3RmaXJlLm5ldC9iYW5rL21haW4uanNwIEhUVFAvMS4xDQpIb3N0OiBkZW1vLnRlc3RmaXJlLm5ldA0NClByb3h5LUNvbm5lY3Rpb246IGtlZXAtYWxpdmUNDQpDYWNoZS1Db250cm9sOiBtYXgtYWdlPTANDQpVcGdyYWRlLUluc2VjdXJlLVJlcXVlc3RzOiAxDQ0KVXNlci1BZ2VudDogTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzgzLjAuNDEwMy4xMTYgU2FmYXJpLzUzNy4zNg0NCkFjY2VwdDogdGV4dC9odG1sLGFwcGxpY2F0aW9uL3hodG1sK3htbCxhcHBsaWNhdGlvbi94bWw7cT0wLjksaW1hZ2Uvd2VicCxpbWFnZS9hcG5nLCovKjtxPTAuOCxhcHBsaWNhdGlvbi9zaWduZWQtZXhjaGFuZ2U7dj1iMztxPTAuOQ0NClJlZmVyZXI6IGh0dHA6Ly9kZW1vLnRlc3RmaXJlLm5ldC9sb2dpbi5qc3ANDQpBY2NlcHQtRW5jb2Rpbmc6IGd6aXAsIGRlZmxhdGUNDQpBY2NlcHQtTGFuZ3VhZ2U6IGVuLVVTLGVuO3E9MC45DQ0KQ29va2llOiBKU0VTU0lPTklEPUQ3MDY3MDg5NjhGNzdDRjJDRDNFODIyOThEODhDQzkwOyBBbHRvcm9BY2NvdW50cz1PREF3TURBd2ZrTnZjbkJ2Y21GMFpYNDFMakU1T0RrME1UQTJNVVUzZkRnd01EQXdNWDVEYUdWamEybHVaMzQwTWpVeE56RXVORFI4DQ0KQ29udGVudC1MZW5ndGg6IDANCg0K]]></request>
+      <response base64="true"></response>
+      <responseRedirected>false</responseRedirected>
+    </requestresponse>
+  </issue>
+  <issue>
+    <serialNumber>6200385837332055040</serialNumber>
+    <type>7340544</type>
+    <name><![CDATA[Base64-encoded data in parameter]]></name>
+    <host ip="65.61.137.117">http://demo.testfire.net</host>
+    <path><![CDATA[/images/p_main.jpg]]></path>
+    <location><![CDATA[/images/p_main.jpg]]></location>
+    <severity>Information</severity>
+    <confidence>Firm</confidence>
+    <issueBackground><![CDATA[<p>Applications sometimes Base64-encode parameters in an attempt to obfuscate them from users or facilitate transport of binary data. The presence of Base64-encoded data may indicate security-sensitive information or functionality that is worthy of further investigation. The data should be reviewed to determine whether it contains any interesting information, or provides any additional entry points for malicious input.</p>]]></issueBackground>
+    <vulnerabilityClassifications><![CDATA[<ul>
+<li><a href="https://cwe.mitre.org/data/definitions/310.html">CWE-310: Cryptographic Issues</a></li>
+<li><a href="https://cwe.mitre.org/data/definitions/311.html">CWE-311: Missing Encryption of Sensitive Data</a></li>
+</ul>]]></vulnerabilityClassifications>
+    <issueDetail><![CDATA[The following parameter appears to contain Base64-encoded data:<ul><li><b>AltoroAccounts = 800000~Corporate~5.198941061E7|800001~Checking~425171.44|</b></li></ul>]]></issueDetail>
+    <issueDetailItems>
+      <issueDetailItem><![CDATA[AltoroAccounts = 800000~Corporate~5.198941061E7|800001~Checking~425171.44|]]></issueDetailItem>
+    </issueDetailItems>
+    <requestresponse>
+      <request method="GET" base64="true"><![CDATA[R0VUIGh0dHA6Ly9kZW1vLnRlc3RmaXJlLm5ldC9pbWFnZXMvcF9tYWluLmpwZyBIVFRQLzEuMQ0KSG9zdDogZGVtby50ZXN0ZmlyZS5uZXQNDQpQcm94eS1Db25uZWN0aW9uOiBrZWVwLWFsaXZlDQ0KVXNlci1BZ2VudDogTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzgzLjAuNDEwMy4xMTYgU2FmYXJpLzUzNy4zNg0NCkFjY2VwdDogaW1hZ2Uvd2VicCxpbWFnZS9hcG5nLGltYWdlLyosKi8qO3E9MC44DQ0KUmVmZXJlcjogaHR0cDovL2RlbW8udGVzdGZpcmUubmV0L2luZGV4LmpzcD9jb250ZW50PXBlcnNvbmFsLmh0bQ0NCkFjY2VwdC1FbmNvZGluZzogZ3ppcCwgZGVmbGF0ZQ0NCkFjY2VwdC1MYW5ndWFnZTogZW4tVVMsZW47cT0wLjkNDQpDb29raWU6IEpTRVNTSU9OSUQ9RDcwNjcwODk2OEY3N0NGMkNEM0U4MjI5OEQ4OENDOTA7IEFsdG9yb0FjY291bnRzPU9EQXdNREF3ZmtOdmNuQnZjbUYwWlg0MUxqRTVPRGswTVRBMk1VVTNmRGd3TURBd01YNURhR1ZqYTJsdVozNDBNalV4TnpFdU5EUjgNDQpDb250ZW50LUxlbmd0aDogMA0KDQo=]]></request>
+      <response base64="true"></response>
+      <responseRedirected>false</responseRedirected>
+    </requestresponse>
+  </issue>
+  <issue>
+    <serialNumber>4644621972021805056</serialNumber>
+    <type>7340544</type>
+    <name><![CDATA[Base64-encoded data in parameter]]></name>
+    <host ip="65.61.137.117">http://demo.testfire.net</host>
+    <path><![CDATA[/index.jsp]]></path>
+    <location><![CDATA[/index.jsp]]></location>
+    <severity>Information</severity>
+    <confidence>Firm</confidence>
+    <issueBackground><![CDATA[<p>Applications sometimes Base64-encode parameters in an attempt to obfuscate them from users or facilitate transport of binary data. The presence of Base64-encoded data may indicate security-sensitive information or functionality that is worthy of further investigation. The data should be reviewed to determine whether it contains any interesting information, or provides any additional entry points for malicious input.</p>]]></issueBackground>
+    <vulnerabilityClassifications><![CDATA[<ul>
+<li><a href="https://cwe.mitre.org/data/definitions/310.html">CWE-310: Cryptographic Issues</a></li>
+<li><a href="https://cwe.mitre.org/data/definitions/311.html">CWE-311: Missing Encryption of Sensitive Data</a></li>
+</ul>]]></vulnerabilityClassifications>
+    <issueDetail><![CDATA[The following parameter appears to contain Base64-encoded data:<ul><li><b>AltoroAccounts = 800000~Corporate~5.198941061E7|800001~Checking~425171.44|</b></li></ul>]]></issueDetail>
+    <issueDetailItems>
+      <issueDetailItem><![CDATA[AltoroAccounts = 800000~Corporate~5.198941061E7|800001~Checking~425171.44|]]></issueDetailItem>
+    </issueDetailItems>
+    <requestresponse>
+      <request method="GET" base64="true"><![CDATA[R0VUIGh0dHA6Ly9kZW1vLnRlc3RmaXJlLm5ldC9pbmRleC5qc3A/Y29udGVudD1wZXJzb25hbC5odG0gSFRUUC8xLjENCkhvc3Q6IGRlbW8udGVzdGZpcmUubmV0DQ0KUHJveHktQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0NClVwZ3JhZGUtSW5zZWN1cmUtUmVxdWVzdHM6IDENDQpVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvODMuMC40MTAzLjExNiBTYWZhcmkvNTM3LjM2DQ0KQWNjZXB0OiB0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS93ZWJwLGltYWdlL2FwbmcsKi8qO3E9MC44LGFwcGxpY2F0aW9uL3NpZ25lZC1leGNoYW5nZTt2PWIzO3E9MC45DQ0KUmVmZXJlcjogaHR0cDovL2RlbW8udGVzdGZpcmUubmV0L2JhbmsvbWFpbi5qc3ANDQpBY2NlcHQtRW5jb2Rpbmc6IGd6aXAsIGRlZmxhdGUNDQpBY2NlcHQtTGFuZ3VhZ2U6IGVuLVVTLGVuO3E9MC45DQ0KQ29va2llOiBKU0VTU0lPTklEPUQ3MDY3MDg5NjhGNzdDRjJDRDNFODIyOThEODhDQzkwOyBBbHRvcm9BY2NvdW50cz1PREF3TURBd2ZrTnZjbkJ2Y21GMFpYNDFMakU1T0RrME1UQTJNVVUzZkRnd01EQXdNWDVEYUdWamEybHVaMzQwTWpVeE56RXVORFI4DQ0KQ29udGVudC1MZW5ndGg6IDANCg0K]]></request>
+      <response base64="true"></response>
+      <responseRedirected>false</responseRedirected>
+    </requestresponse>
+  </issue>
+</issues>
